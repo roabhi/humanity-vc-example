@@ -1,0 +1,818 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IHumanityProtocolVCsPhase1",
+  "sourceName": "contracts/implementation/interfaces/IVC_Phase1.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "AlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CategoryAlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CategoryDoesNotExist",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CategoryLengthInvalid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CredentialAlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CredentialRevokedOrInvalid",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "DoesNotExist",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EmptyIssuerDID",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EmptySourceNotAllowed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidBatchSize",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidCredentialCategory",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidExpirationTime",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotAuthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ReferrerDoesNotExist",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SelfReferralNotAllowed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TooManyCategories",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "UserAlreadyRegistered",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddressNotAllowed",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "category",
+          "type": "string"
+        }
+      ],
+      "name": "CategoryAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "category",
+          "type": "string"
+        }
+      ],
+      "name": "CategoryRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "vcHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CredentialIssued",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "vcHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "CredentialRevoked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "issuer",
+          "type": "address"
+        }
+      ],
+      "name": "IssuerAuthorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "issuer",
+          "type": "address"
+        }
+      ],
+      "name": "IssuerDeauthorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTotal",
+          "type": "uint256"
+        }
+      ],
+      "name": "PalmVerifiedUsersIncremented",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "registrar",
+          "type": "address"
+        }
+      ],
+      "name": "RegistrarAuthorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "registrar",
+          "type": "address"
+        }
+      ],
+      "name": "RegistrarDeauthorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldTotal",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTotal",
+          "type": "uint256"
+        }
+      ],
+      "name": "TotalPalmVerifiedUsersUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldTotal",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTotal",
+          "type": "uint256"
+        }
+      ],
+      "name": "TotalUsersUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "userAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "referrerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "UserRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTotal",
+          "type": "uint256"
+        }
+      ],
+      "name": "UsersIncremented",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "addToTotalPalmVerifiedUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "addToTotalUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_issuer",
+          "type": "address"
+        }
+      ],
+      "name": "authorizeIssuer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_registrar",
+          "type": "address"
+        }
+      ],
+      "name": "authorizeRegistrar",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_issuer",
+          "type": "address"
+        }
+      ],
+      "name": "authorizedIssuers",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_registrar",
+          "type": "address"
+        }
+      ],
+      "name": "authorizedRegistrars",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "vcHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "string",
+              "name": "vcCategory",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "vcSource",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "issuerDID",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "expiresAt",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IHumanityProtocolVCsPhase1.CredentialData[]",
+          "name": "_credentials",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "batchIssueCredentials",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "userAddr",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "referrerAddr",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IHumanityProtocolVCsPhase1.User[]",
+          "name": "_usersToRegister",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "batchRegister",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_issuer",
+          "type": "address"
+        }
+      ],
+      "name": "deauthorizeIssuer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_registrar",
+          "type": "address"
+        }
+      ],
+      "name": "deauthorizeRegistrar",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "vcHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getVcData",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "issuerDID",
+              "type": "string"
+            },
+            {
+              "internalType": "enum IHumanityProtocolVCsPhase1.VCStatus",
+              "name": "status",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "expiresAt",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "category",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "source",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct IHumanityProtocolVCsPhase1.VC",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "incrementPalmVerifiedUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "incrementUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_vcHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isCredentialValid",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_userAddress",
+          "type": "address"
+        }
+      ],
+      "name": "isRegistered",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_vcHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "_vcCategory",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_vcSource",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_issuerDID",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_expiresAt",
+          "type": "uint256"
+        }
+      ],
+      "name": "issueCredential",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_vcHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string",
+          "name": "_issuerDID",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_expiresAt",
+          "type": "uint256"
+        }
+      ],
+      "name": "issueCredential",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_userAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_referrerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "register",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_vcHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "revokeCredential",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_count",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTotalPalmVerifiedUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_count",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTotalUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalPalmVerifiedUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalUsers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "transferAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "userAddress",
+          "type": "address"
+        }
+      ],
+      "name": "users",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "userAddr",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "referrerAddr",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IHumanityProtocolVCsPhase1.User",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
