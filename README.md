@@ -6,7 +6,15 @@ This project demonstrate how to implement Humanity Protocol VC contract on-chain
 
 On-chain visibility is limited to aggregate, anonymized metrics.
 
-## Env variables you will need
+## **Key Features**
+
+- **Verifiable Credentials Management**: Issue and revoke credentials with category support
+- **Category Management**: Dynamic credential categorization system
+- **Batch Operations**: Efficient bulk processing for credentials and registrations
+- **UUPS Upgradeable**: Contract can be upgraded while preserving state
+- **Role-Based Access Control**: Separate roles for issuers, registrars, and owner
+
+## Env variables 
 
 ```
 PRIVATE_KEY=<YOUR_PRIVATE_KEY>
